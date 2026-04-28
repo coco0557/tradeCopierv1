@@ -1,0 +1,9 @@
+# MT5 Telegram Signal Copier — Python dependencies
+#
+# Install with:  pip install -r requirements.txt
+#
+# Note: MetaTrader5 only works on Windows (official MT5 restriction).
+# You can still develop and test signal_parser.py on Mac/Linux.
+
+telethon>=1.36.0          # Telegram client (async, no bot token needed)
+MetaTrader5>=5.0.4424     # Official MT5 Python bridge (Windows only)
