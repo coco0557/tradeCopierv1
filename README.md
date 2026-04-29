@@ -1,27 +1,42 @@
-# tradeCopierv1
 
-A Python bot that monitors a Telegram group for trading signals and automatically executes them on MetaTrader 5.
+```
+BUY XAUUSD
+Entry: 1920.50
+SL: 1915.00
+TP1: 1930.00
+TP2: 1940.00
+```
 
----
-
-## How It Works
-
-The bot is split into four modules, each with a single responsibility:
-
-**`telegram_listener.py`**
-Uses the Telethon library to connect to Telegram as a user account (not a bot token). Monitors a specified group or channel for new messages and fires a callback for each one.
-
-**`signal_parser.py`**
-Takes raw message text and uses regex pattern matching to extract structured trade data — action (BUY/SELL), symbol, entry price, stop loss, and one or more take profit levels. Returns a `TradeSignal` object or `None` if the message is not a signal.
-
-**`mt5_trader.py`**
-Connects to a running MetaTrader 5 terminal via the official `MetaTrader5` Python package. Takes a `TradeSignal` and places market orders, splitting the configured lot size evenly across each TP level.
-
-**`main.py`**
-Entry point. Loads config, initialises the MT5 connection (if available), and wires the Telegram listener to the signal parser and trader.
+**Inline**
+```
+SELL EURUSD @ 1.0850 SL 1.0900 TP 1.0780
+```
 
 ---
 
-## Signal Formats Supported
+## Requirements
 
-**Labelled**
+- Python 3.10+
+- Windows OS (required for MetaTrader5 package)
+- MetaTrader 5 terminal installed and logged in
+- Telegram account and API credentials from my.telegram.org
+
+On macOS/Linux the bot runs in signal monitor mode — MT5 is Windows only.
+
+---
+
+## Setup
+
+1. Clone the repo: git clone https://github.com/coco0557/tradeCopierv1.git
+2. Install dependencies: pip install -r requirements.txt
+3. Copy config: cp config.example.json config.json
+4. Fill in your api_id, api_hash, and channel ID in config.json
+5. Open MT5 and enable Algo Trading
+6. Run: python main.py
+
+---
+
+## Notes
+
+- config.json is excluded via .gitignore — never commit it
+- Always test on a demo account first
