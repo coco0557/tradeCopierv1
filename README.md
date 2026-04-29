@@ -12,7 +12,7 @@ The bot is split into four modules, each with a single responsibility:
 Uses the Telethon library to connect to Telegram as a user account (not a bot token). Monitors a specified group or channel for new messages and fires a callback for each one.
 
 **`signal_parser.py`**
-Takes raw message text and uses regex pattern matching to extract structured trade data — action (BUY/SELL), symbol, entry price, stop loss, and one or more take profit levels. Returns a TradeSignal object or None if the message is not a signal.
+Takes raw message text and uses regex pattern matching to extract structured trade data - action (BUY/SELL), symbol, entry price, stop loss, and one or more take profit levels. Returns a TradeSignal object or None if the message is not a signal.
 
 **`mt5_trader.py`**
 Connects to a running MetaTrader 5 terminal via the official MetaTrader5 Python package. Takes a TradeSignal and places market orders, splitting the configured lot size evenly across each TP level.
@@ -20,7 +20,7 @@ Connects to a running MetaTrader 5 terminal via the official MetaTrader5 Python 
 **`main.py`**
 Entry point. Loads config, initialises the MT5 connection (if available), and wires the Telegram listener to the signal parser and trader.
 
----
+/////
 
 ## Signal Formats Supported
 
@@ -37,7 +37,7 @@ Inline:
 Emoji prefixed:
   BUY GOLD 1920 SL 1910 TP 1935
 
----
+/////
 
 ## Requirements
 
@@ -48,7 +48,7 @@ Emoji prefixed:
 
 On macOS/Linux the bot runs in signal monitor mode — it connects to Telegram and logs detected signals but does not place trades. MT5 is Windows only.
 
----
+/////
 
 ## Setup
 
@@ -73,7 +73,7 @@ On macOS/Linux the bot runs in signal monitor mode — it connects to Telegram a
    On first run Telethon will ask for your phone number and a verification code.
    After that a session file is saved and login is automatic.
 
----
+/////
 
 ## Lot Splitting
 
@@ -84,13 +84,13 @@ If master_lot_size = 0.03 and the signal has 3 TPs, the bot places:
 
 Each order shares the same entry and SL.
 
----
+/////
 
 ## Logs
 
 All activity is written to both the console and bot.log.
 
----
+/////
 
 ## Notes
 
