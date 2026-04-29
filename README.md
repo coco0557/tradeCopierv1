@@ -1,7 +1,7 @@
 # tradeCopierv1
 
 A Python bot that monitors a Telegram group for trading signals and automatically executes them on MetaTrader 5.
-
+This is not finnancial advice
 ---
 
 ## How It Works
